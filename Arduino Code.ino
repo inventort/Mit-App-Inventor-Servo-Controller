@@ -1,10 +1,17 @@
 #include <SoftwareSerial.h> 
-
 #include <Servo.h> 
 Servo myservo; 
 int bluetoothTx = 0; 
 int bluetoothRx = 1; 
-SoftwareSerial bluetooth(bluetoothTx, bluetoothRx);
+//SoftwareSerial bluetooth(bluetoothTx, bluetoothRx);
+int count=0;
+int dir=0;
+char Incoming_Value = 0;
+
+
+
+
+//==========================================================
 
 void setup()
 {
@@ -13,16 +20,23 @@ void setup()
   Serial.begin(9600);
 
   
-  bluetooth.begin(9600);
+
+  
+  //bluetooth.begin(9600);
 }
 
 void loop()
 {
+  uint8_t i;
   
-  if(bluetooth.available()> 0 ) 
+  
+  if(Serial.available()) 
   {
-    int servopos = bluetooth.read(); 
+    int servopos = Serial.read(); 
     Serial.println(servopos); 
     myservo.write(servopos); 
+    Serial.flush();
+  }
+
 
 }
