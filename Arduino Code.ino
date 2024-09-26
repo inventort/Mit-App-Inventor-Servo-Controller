@@ -9,10 +9,6 @@ int dir=0;
 char Incoming_Value = 0;
 
 
-
-
-//==========================================================
-
 void setup()
 {
   myservo.attach(9); 
